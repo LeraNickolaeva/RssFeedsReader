@@ -1,0 +1,20 @@
+development:
+  adapter: postgresql
+  database: rss_db
+  username: postgres
+  password: root
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: rss_db_test
+  username: postgres
+  password: root
+  host: localhost
+
+production:
+  adapter: postgresql
+  database: rss_db
+  username: postgres
+  password: root
+  host: localhost

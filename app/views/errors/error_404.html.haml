@@ -1,0 +1,8 @@
+#errors-page
+  %h1 Sorry, You can't view this page
+  = link_to 'Back', :back, class: "btn btn-primary"
+  - # Do not remove this line. It is used for development
+  - # purposes. When an error is found. In development, it
+  - # shows the logs, in production it is nil.
+  .error-msg
+    = @log

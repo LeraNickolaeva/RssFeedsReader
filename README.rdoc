@@ -1,0 +1,5 @@
+= Very Basic RSS Reader
+
+This is the source code for a very basic RSS reader built with {Ruby On Rails}[http://rubyonrails.org/] using {Superfeedr}[https://superfeedr.com/] and its {Superfeedr Rails Engine}[https://rubygems.org/gems/superfeedr_engine].
+
+The Superfeedr Engine makes it trivial to <b>consume RSS feeds inside a Rails application</b>.

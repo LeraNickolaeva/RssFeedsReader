@@ -1,0 +1,29 @@
+%h1 Channels
+%table.table.table-striped
+  %thead
+    %tr
+      %th Title
+      %th Url
+      %th Show
+      %th Edit
+      %th Destroy
+      %th{:colspan => "2"}
+  %tbody
+    - @feeds.each do |feed|
+      - cache(feed) do
+        %tr
+          %td= feed.parse_title(feed.url)
+          %td= feed.url
+          %td
+            - if can? :read, feed
+              = link_to feed, :class => "btn btn-default" do
+                %span.glyphicon.glyphicon-eye-open
+          %td
+            - if can? :update, feed
+              = link_to edit_feed_path(feed), :class => "btn btn-default" do
+                %span.glyphicon.glyphicon-edit
+          %td
+            - if can? :destroy, feed
+              = link_to feed, :class => "btn btn-default", method: :delete, data: {confirm: 'Are you sure?'} do
+                %span.glyphicon.glyphicon-trash
+%br

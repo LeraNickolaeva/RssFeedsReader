@@ -1,0 +1,11 @@
+.col-xs-6
+  %h1 Editining Channel
+  = simple_form_for @feed do |f|
+    .form-inputs
+      = f.input :title
+      = f.input :url, as: :string
+    .form-actions
+      = f.button :submit, 'Update', class: 'btn btn-success'
+      = link_to 'Show', @feed, class: 'btn btn-default'
+      = link_to 'Back', feeds_path, class: 'btn btn-default'
+

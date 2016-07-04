@@ -1,0 +1,21 @@
+= render 'user/shared/change_email'
+.col-xs-8
+  %h1 Profile Settings
+  = simple_form_for @profile, method: :patch, url: user_profile_path do |f|
+    .form-inputs
+      = image_tag(@profile.avatar.send(@profile.avatar_size))
+      = f.file_field :avatar, class: "filestyle"
+      .form-group
+        = f.label :avatar_size
+        = f.select :avatar_size, ["basic","small","large"],{}, {class: "form-control"}
+      = f.input :avatar_cache, as: :hidden
+      = f.input :remove_avatar, as: :boolean
+      = f.input :first_name
+      = f.input :last_name
+      = f.input :nickname
+      .form-group
+        = f.label :profile_type
+        = f.select :profile_type, ["basic","medium","premium"],{}, {class: "form-control"}
+    .form-actions
+      = f.button :submit, 'Update', class: 'btn btn-success'
+

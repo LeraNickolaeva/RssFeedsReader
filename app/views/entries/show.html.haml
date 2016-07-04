@@ -1,0 +1,9 @@
+%p
+  %strong Title:
+  = @entry.title
+%p
+  %strong Url:
+  = @entry.url
+=link_to 'Back', :back
+= nested_comments @comments
+= render "comments/form"

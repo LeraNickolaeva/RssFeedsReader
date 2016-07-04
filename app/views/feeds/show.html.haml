@@ -1,0 +1,11 @@
+%p
+  = link_to 'Update', retrieve_feed_path(@feed), class: 'btn btn-default'
+  = link_to 'Edit',  edit_feed_path(@feed), class: 'btn btn-default'
+  = link_to 'All Channels', feeds_path, class: 'btn btn-default'
+  = form_tag entries_path, class: "form-inline", method: :get do
+    .form-group
+      = text_field_tag :query, params[:query], class: "form-control",id: "entry_search", autocomplete: "off"
+    = submit_tag "Search", class: "btn btn-success"
+
+
+\#{render :partial => 'entries/index', :locals => {:entries =>  @feed.entries}}

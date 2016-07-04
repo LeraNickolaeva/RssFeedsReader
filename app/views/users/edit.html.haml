@@ -1,0 +1,8 @@
+%h1 Edit Role
+= form_for @user do |f|
+  %p
+    = f.label :role
+    %br
+    = f.text_field :role
+  %p
+    = f.submit "Update"

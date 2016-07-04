@@ -1,0 +1,9 @@
+.col-xs-6
+  %h1 New Channel
+  = simple_form_for @feed do |f|
+    .form-inputs
+      = f.input :url, as: :string
+    .form-actions
+      = f.button :submit, 'Create', class: 'btn btn-success'
+      = link_to 'Back', :back, class: 'btn bnt-default'
+

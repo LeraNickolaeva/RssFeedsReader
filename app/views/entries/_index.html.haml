@@ -1,0 +1,27 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th Title
+      %th Show
+      %th{:colspan => "1"}
+  %tbody
+    - entries.each do |entry|
+      %tr
+        %td= link_to entry.title, entry.url
+        %td
+          = link_to entry, :class => "btn btn-default" do
+            %span.glyphicon.glyphicon-eye-open
+        %td
+          .caption{:style => "text-align:center;"}
+            = link_to like_entry_path(entry),  class: "like", method: :put, remote: true, data: { type: :json } do
+              %button.btn.btn-info{"aria-label" => "Left Align", :type => "button"}
+                %span.glyphicon.glyphicon-thumbs-up.glyphicon-align-center{"aria-hidden" => "true"}
+                %span.badge= entry.get_upvotes.size
+        %td
+          .caption{:style => "text-align:center;"}
+            = link_to dislike_entry_path(entry), class: "like", method: :put,remote: true, data: { type: :json } do
+              %button.btn.btn-info{"aria-label" => "Left Align", :type => "button"}
+                %span.glyphicon.glyphicon-thumbs-down.glyphicon-align-center{"aria-hidden" => "true"}
+                %span.badge= entry.get_downvotes.size
+
+= javascript_include_tag "upvote.js"

@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %title RssFeedsReader
+    = stylesheet_link_tag    'application', media: 'all',
+                                            data: { turbolinks_track: true }
+    = javascript_include_tag 'application', data: { turbolinks_track: true }
+    = csrf_meta_tags
+  %body
+    = render 'layouts/header'
+    .container
+      - flash.each do |key, value|
+        %div{:class => "alert alert-#{key}"}
+          = value
+    .container
+      .col-xs-3
+      .col-xs-6= yield
+      .col-xs-3
+  = render 'layouts/footer'

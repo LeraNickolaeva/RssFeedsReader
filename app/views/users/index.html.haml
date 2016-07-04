@@ -1,0 +1,19 @@
+%h1 Users
+.row
+  .col-lg-4.col-lg-offset-4
+  .col-lg-12
+    %table#table.table
+      %thead
+        %tr
+          %th Name
+          %th Email
+          %th Role
+          %th{:colspan => "1"}
+        %tbody
+          - @users.each do |user|
+            - cache(user) do
+              %tr
+                %td= user.email
+                %td= user.role
+                %td
+                  = link_to 'Edit Role', edit_user_user_path(user)

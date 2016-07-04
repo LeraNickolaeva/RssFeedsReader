@@ -1,0 +1,9 @@
+= simple_form_for [@commentable, @comment] do |f|
+  = f.hidden_field :parent_id
+  .form-inputs
+    %p
+      = f.label :content, "New comment"
+      %br
+      = f.text_area :content, :rows => 4
+    %p
+      = f.button :submit, 'Post comment', class: 'btn btn-success'

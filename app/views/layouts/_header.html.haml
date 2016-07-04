@@ -1,0 +1,33 @@
+.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      = image_tag "rss.png", class: 'navbar-brand'
+      = link_to "Feeds", root_path, class: 'navbar-brand'
+    %ul.nav.navbar-nav
+      - if can? :create, Feed
+        %li= link_to "Channels",feeds_path
+        %li= link_to "Create Channel", new_feed_path
+      - if can? :all, User
+        %li= link_to "Users", all_users_path
+    %ul.nav.navbar-nav.navbar-right
+      - if user_signed_in?
+        - if current_user.profile.present?
+          .navbar-brand
+            = image_tag(current_user.profile.avatar.thumb.url)
+        %li.dropdown
+          = link_to '#', class: 'dropdown-toggle',
+                         data: { toggle: 'dropdown' },
+                         role: 'button',
+                         aria: { expanded: 'false' } do
+            Account
+            %span.caret
+          %ul.dropdown-menu{ role: 'menu' }
+            %li= link_to 'Settings', edit_user_profile_path
+            %li= link_to 'Sign Out',
+                          destroy_user_session_path,
+                          data: { method: :delete }
+      - else
+        %li
+          = link_to "Sign in", new_user_session_path
+        %li
+          = link_to "Sign up", new_user_registration_path
